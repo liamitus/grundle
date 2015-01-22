@@ -24,6 +24,14 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        connect: {
+            server: {
+                options: {
+                    port: 3000,
+                    keepalive: true
+                }        
+            }         
+        },
 		smushit: {
 			all: {
 				src: compression_root + 'min/smushit/*'
@@ -45,9 +53,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-smushit');
     grunt.loadNpmTasks('grunt-imageoptim');
     grunt.loadNpmTasks('grunt-spritesmith');
 
-    grunt.registerTask('default', ['clean', 'copy', 'smushit', 'imageoptim']);
+    grunt.registerTask('default', ['clean', 'copy', 'sprite', 'connect']);
 }
