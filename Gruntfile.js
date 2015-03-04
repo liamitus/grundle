@@ -4,10 +4,12 @@ module.exports = function (grunt) {
     var sprite_root = 'sprites/';
 
 	grunt.initConfig({
+
         clean: [
             compression_root + 'min',
             sprite_root + 'out'
         ],
+    
         copy: {
             demo: {
                 files: [{
@@ -24,6 +26,7 @@ module.exports = function (grunt) {
                 }]
             }
         },
+
         connect: {
             server: {
                 options: {
@@ -32,11 +35,13 @@ module.exports = function (grunt) {
                 }        
             }         
         },
+
 		smushit: {
 			demo: {
 				src: compression_root + 'min/smushit/*'
 			}
 		},
+
         imageoptim: {
             demo: {
                 src: compression_root + 'min/imageoptim'
@@ -45,7 +50,14 @@ module.exports = function (grunt) {
                 src: [compression_root + 'main/**']
             }
         },
+
         sprite: {
+            main: {
+                src: [compression_root + 'main/**/*.png', compression_root + 'main/**/*.jpg', compression_root + 'main/**/*.gif'],
+                dest: compression_root + 'out/spritesheet.png',
+                destCss: compression_root + 'out/sprites.css',
+                engine: 'phantomjssmith'
+            },
             demo: {
                 src: sprite_root + 'raw/*.png',
                 dest: sprite_root + 'out/spritesheet.png',
