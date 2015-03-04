@@ -9,7 +9,7 @@ module.exports = function (grunt) {
             sprite_root + 'out'
         ],
         copy: {
-            main: {
+            demo: {
                 files: [{
                     expand: true,
                     cwd: compression_root + 'raw',
@@ -33,17 +33,20 @@ module.exports = function (grunt) {
             }         
         },
 		smushit: {
-			all: {
+			demo: {
 				src: compression_root + 'min/smushit/*'
 			}
 		},
         imageoptim: {
-            all: {
+            demo: {
                 src: compression_root + 'min/imageoptim'
+            },
+            main : {
+                src: [compression_root + 'main/**']
             }
         },
         sprite: {
-            all: {
+            demo: {
                 src: sprite_root + 'raw/*.png',
                 dest: sprite_root + 'out/spritesheet.png',
                 destCss: sprite_root + 'out/sprites.css'
